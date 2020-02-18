@@ -77,7 +77,7 @@ def createCloudJS(cloudJSA, cloudJSB, cloudJSO):
     cloudJSDataO = {}
     # Compare fields in the input cloud.js's that should be equal
     # We also write the fields in the output cloud.js
-    for equalField in ["version", "octreeDir", "boundingBox", "pointAttributes", "spacing", "scale", "hierarchyStepSize"]:
+    for equalField in ["version", "octreeDir", "boundingBox", "pointAttributes", "spacing", "scale", "hierarchyStepSize", "projection"]:
         if cloudJSDataA[equalField] == cloudJSDataB[equalField]:
              cloudJSDataO[equalField] = cloudJSDataA[equalField]
         else:
@@ -95,7 +95,7 @@ def createCloudJS(cloudJSA, cloudJSB, cloudJSO):
     tbbO["uy"] = max([tbbA["uy"], tbbB["uy"]])
     tbbO["uz"] = max([tbbA["uz"], tbbB["uz"]])
     cloudJSDataO["tightBoundingBox"] = tbbO
-
+    cloudJSDataO["points"] = cloudJSDataA["points"] + cloudJSDataB["points"]
     hierarchyStepSize = cloudJSDataA['hierarchyStepSize']
 
     cloudJSOFile = open(cloudJSO, 'w')
