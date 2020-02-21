@@ -48,6 +48,8 @@ def run(inputFolder, outputFolder, moveFiles):
         sys.stdout = stdout
         sys.stderr = stderr
     print("Final merged Potree-OctTree is in ", octTreeOutputFolder)
+    
+    return octTreeOutputFolder
 
 def argument_parser():
     """ Define the arguments and return the parser object"""
